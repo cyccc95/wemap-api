@@ -30,7 +30,7 @@ public class EmailUtil {
                 case 1:
                     // A~Z
                     code.append((char)(randomNum.nextInt(26) + 65));
-                    break;;
+                    break;
                 case 2:
                     // 0~9
                     code.append(randomNum.nextInt(10));
