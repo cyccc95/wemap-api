@@ -13,7 +13,7 @@ public enum StatusCode {
     /** CustomErrorCode
      * 1~2자리
      * 00 unassigned
-     * 01 userIdx
+     * 01 user
      * 02 loginId
      * 03 password
      * 04 name
@@ -32,7 +32,7 @@ public enum StatusCode {
      * 05 expired
      * 06 malformed
      * 07 unsupported
-     *
+     * 08 forbidden
     */
 
     OK(HttpStatus.OK, "S200", "OK"),
@@ -47,8 +47,7 @@ public enum StatusCode {
     INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "E500", "Internal Server Error"),
     SERVICE_UNAVAILABLE(HttpStatus.SERVICE_UNAVAILABLE, "E503", "Service Unavailable"),
 
-    //인증, 인가
-    USER_NOT_FOUND(HttpStatus.NOT_FOUND, "E0104", "User Not Found"),
+    //토큰
     ACCESS_TOKEN_INVALID(HttpStatus.BAD_REQUEST, "E0801", "AccessToken Invalid"),
     ACCESS_TOKEN_EXPIRED(HttpStatus.BAD_REQUEST, "E0805", "AccessToken Expired"),
     ACCESS_TOKEN_MALFORMED(HttpStatus.BAD_REQUEST, "E0806", "AccessToken Malformed"),
@@ -59,6 +58,8 @@ public enum StatusCode {
     REFRESH_TOKEN_UNSUPPORTED(HttpStatus.BAD_REQUEST, "E0907", "RefreshToken Unsupported"),
 
     //회원가입, 로그인
+    USER_NOT_FOUND(HttpStatus.NOT_FOUND, "E0104", "User Not Found"),
+    USER_LOCK(HttpStatus.FORBIDDEN, "E0108", "User Lock"),
     LOGINID_INVALID(HttpStatus.BAD_REQUEST, "E0201", "LoginId Invalid"),
     LOGINID_DUPLICATED(HttpStatus.CONFLICT, "E0202", "LoginId Duplicated"),
     PASSWORD_INVALID(HttpStatus.BAD_REQUEST, "E0301", "Password Invalid"),
