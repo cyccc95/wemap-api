@@ -2,11 +2,13 @@ package com.wemap.api.domain.user.entity;
 
 import com.wemap.api.common.model.DateAudit;
 import com.wemap.api.common.type.UserType;
+import com.wemap.api.domain.user.dto.UserDto;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.modelmapper.ModelMapper;
 
 import java.time.LocalDate;
 
@@ -48,5 +50,17 @@ public class User extends DateAudit {
         this.userType = userType;
         this.loginFailCount = loginFailCount;
         this.lock = lock;
+    }
+
+    public void setLoginFailCount(Integer loginFailCount) {
+        this.loginFailCount = loginFailCount;
+    }
+
+    public void setLock(Boolean lock) {
+        this.lock = lock;
+    }
+
+    public UserDto.SimpleResponse toSimpleUserDto() {
+        return new ModelMapper().map(this, UserDto.SimpleResponse.class);
     }
 }
